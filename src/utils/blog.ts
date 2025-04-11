@@ -193,7 +193,6 @@ export const getStaticPathsBlogPost = async () => {
   }));
 };
 
-/** */
 export const getStaticPathsBlogCategory = async ({ paginate }: { paginate: PaginateFunction }) => {
   if (!isBlogEnabled || !isBlogCategoryRouteEnabled) return [];
 
@@ -217,7 +216,6 @@ export const getStaticPathsBlogCategory = async ({ paginate }: { paginate: Pagin
   );
 };
 
-/** */
 export const getStaticPathsBlogTag = async ({ paginate }: { paginate: PaginateFunction }) => {
   if (!isBlogEnabled || !isBlogTagRouteEnabled) return [];
 
