@@ -8,9 +8,3 @@ export const getProjectRootDir = (): string => {
 
   return mode === 'production' ? path.join(__dirname, '../') : path.join(__dirname, '../../');
 };
-
-const __srcFolder = path.join(getProjectRootDir(), '/src');
-
-export const getRelativeUrlByFilePath = (filepath: string): string => {
-  return filepath.replace(__srcFolder, '');
-};
