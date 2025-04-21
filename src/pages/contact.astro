@@ -3,6 +3,7 @@ import Layout from '~/layouts/PageLayout.astro';
 import HeroText from '~/components/widgets/HeroText.astro';
 import ContactUs from '~/components/widgets/Contact.astro';
 import Features2 from '~/components/widgets/Features2.astro';
+import Features3 from '~/components/widgets/Features3.astro';
 
 const metadata = {
   title: 'Contact',
@@ -10,35 +11,73 @@ const metadata = {
 ---
 
 <Layout metadata={metadata}>
-  <!-- HeroText Widget ******************* -->
+  <div class="intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade">
+    <HeroText
+      tagline="Contact"
+      title="Get in Touch"
+      subtitle="Have questions? We'd love to hear from you."
+    />
+  </div>
 
-  <HeroText tagline="Contact" title="Let's Connect!" />
+  <div class="intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade">
+    <ContactUs
+      id="form"
+      title="Contact Us"
+      subtitle="Fill out the form below and we'll get back to you as soon as possible."
+      inputs={[
+        {
+          type: 'text',
+          name: 'name',
+          label: 'Name',
+          placeholder: 'Your name'
+        },
+        {
+          type: 'email',
+          name: 'email',
+          label: 'Email',
+          placeholder: 'Your email'
+        },
+        {
+          type: 'textarea',
+          name: 'message',
+          label: 'Message',
+          placeholder: 'Your message'
+        }
+      ]}
+      textarea={{
+        label: 'Message'
+      }}
+      disclaimer={{
+        label: 'By submitting this form, you agree to our privacy policy and terms of service.'
+      }}
+      description="We'll get back to you as soon as possible."
+    />
+  </div>
 
-  <ContactUs
-    id="form"
-    title="Drop us a message today!"
-    subtitle="For quicker answers, explore our FAQs section. You may find the solution you're looking  for right there! If not, our support team is delighted to help you."
-    inputs={[
-      {
-        type: 'text',
-        name: 'name',
-        label: 'Name',
-      },
-      {
-        type: 'email',
-        name: 'email',
-        label: 'Email',
-      },
-    ]}
-    textarea={{
-      label: 'Message',
-    }}
-    disclaimer={{
-      label:
-        'By submitting this contact form, you acknowledge and agree to the collection of your personal information.',
-    }}
-    description="Our support team typically responds within 24 business hours."
-  />
+  <div class="intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade">
+    <Features3
+      title="Other Ways to Reach Us"
+      subtitle="We're available through multiple channels"
+      columns={3}
+      items={[
+        {
+          title: 'Email',
+          description: 'Send us an email at support@example.com',
+          icon: 'tabler:mail',
+        },
+        {
+          title: 'Phone',
+          description: 'Call us at +1 (555) 123-4567',
+          icon: 'tabler:phone',
+        },
+        {
+          title: 'Live Chat',
+          description: 'Chat with us in real-time',
+          icon: 'tabler:message-circle',
+        },
+      ]}
+    />
+  </div>
 
   <!-- Features2 Widget ************** -->
 

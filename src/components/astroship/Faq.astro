@@ -52,7 +52,7 @@ const faq = [
     <div class="grid divide-y divide-neutral-200 max-w-xl mx-auto mt-8">
         {
             faq.map((item) => (
-                <div class="py-5">
+                <div class="py-5 intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade">
                     <details class="group">
                         <summary class="flex justify-between items-center font-medium cursor-pointer list-none">
                             <span> {item.question}</span>
