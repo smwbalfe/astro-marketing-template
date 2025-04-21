@@ -1,108 +1,93 @@
 ---
-import Layout from '~/layouts/PageLayout.astro';
-import HeroText from '~/components/widgets/HeroText.astro';
-import Prices from '~/components/widgets/Pricing.astro';
+import Layout from "~/layouts/PageLayout.astro"
+import Container from "~/components/astroship/components/container.astro"
+import PricingComponent, { type Plan } from "~/components/astroship/Pricing.astro";
 
 const metadata = {
-  title: 'Pricing',
+  title: "Pricing",
+  description: "Simple & Predictable pricing. No Surprises.",
+  openGraph: {
+    url: "/pricing",
+    siteName: "Astrowind",
+    images: [],
+    locale: "en_US",
+    type: "website"
+  }
 };
+
+const plans: Plan[] = [
+    {
+        name: "Startup",
+        price: "79",
+        desc: "Perfect for early-stage SaaS companies",
+        color: "indigo",
+        popular: false,
+        features: [
+            "Up to 5 team members",
+            "10,000 API calls/month",
+            "5 integrations",
+            "Email support",
+            "Basic analytics",
+            "99.5% uptime SLA",
+            "Data export"
+        ],
+        button: {
+            text: "Start Free Trial",
+            link: "/",
+        },
+    },
+    {
+        name: "Scale",
+        price: "199",
+        desc: "For growing SaaS businesses",
+        popular: true,
+        color: "orange",
+        features: [
+            "Up to 20 team members",
+            "100,000 API calls/month",
+            "Unlimited integrations",
+            "Priority support",
+            "Advanced analytics",
+            "99.9% uptime SLA",
+            "Custom workflows",
+            "SSO authentication"
+        ],
+        button: {
+            text: "Start Free Trial",
+            link: "#",
+        },
+    },
+    {
+        name: "Enterprise",
+        price: null,
+        desc: "Custom solutions for larger organizations",
+        popular: false,
+        color: "purple",
+        features: [
+            "Unlimited team members",
+            "Custom API limits",
+            "Dedicated support team",
+            "99.99% uptime SLA",
+            "Custom analytics",
+            "SAML & SSO",
+            "Audit logs",
+            "Security compliance",
+            "Custom contracts"
+        ],
+        button: {
+            text: "Contact Sales",
+            link: "/contact",
+        },
+    },
+];
 ---
 
-<Layout metadata={metadata}>
-  <div class="intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade">
-    <HeroText
-      tagline="Pricing"
-      title="Stellar Pricing for Every Journey"
-      subtitle="Choose the perfect plan that aligns with your cosmic goals."
-    />
-  </div>
-
-  <div class="intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade">
-    <Prices
-      title="Our prices"
-      subtitle="Only pay for what you need"
-      prices={[
-        {
-          title: 'basic',
-          subtitle: 'Optimal choice for personal use',
-          price: 29,
-          period: 'per month',
-          items: [
-            {
-              description: 'Etiam in libero, et volutpat',
-            },
-            {
-              description: 'Aenean ac nunc dolor tristique',
-            },
-            {
-              description: 'Cras scelerisque accumsan lib',
-            },
-            {
-              description: 'In hac habitasse',
-            },
-          ],
-          callToAction: {
-            target: '_blank',
-            text: 'Get started',
-            href: '#',
-          },
-        },
-        {
-          title: 'standard',
-          subtitle: 'Optimal choice for small teams',
-          price: 69,
-          period: 'Per Month',
-          items: [
-            {
-              description: 'Proin vel laoreet',
-            },
-            {
-              description: 'Ut efficitur habitasse egestas',
-            },
-            {
-              description: 'Volutpat hac curabitur',
-            },
-            {
-              description: 'Pellentesque blandit ut nibh',
-            },
-            {
-              description: 'Donec fringilla sem',
-            },
-          ],
-          callToAction: {
-            target: '_blank',
-            text: 'Get started',
-            href: '#',
-          },
-          hasRibbon: true,
-          ribbonTitle: 'popular',
-        },
-        {
-          title: 'premium',
-          subtitle: 'Optimal choice for companies',
-          price: 199,
-          period: 'Per Month',
-          items: [
-            {
-              description: 'Curabitur suscipit risus',
-            },
-            {
-              description: 'Aliquam habitasse malesuada',
-            },
-            {
-              description: 'Suspendisse sit amet blandit',
-            },
-            {
-              description: 'Suspendisse auctor blandit dui',
-            },
-          ],
-          callToAction: {
-            target: '_blank',
-            text: 'Get started',
-            href: '#',
-          },
-        },
-      ]}
-    />
-  </div>
+<Layout>
+    <Container>
+        <h1 class="text-4xl font-bold text-center mb-4">Pricing</h1>
+        <p class="text-xl text-center text-gray-600 mb-12">Simple & Predictable pricing. No Surprises.</p>
+        <div class="grid md:grid-cols-3 gap-10 mx-auto max-w-screen-lg mt-12">
+            {plans.map((item) => <PricingComponent plan={item} />)}
+        </div>
+    </Container>
 </Layout>
