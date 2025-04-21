@@ -1,44 +1,109 @@
 ---
 import Layout from "~/layouts/PageLayout.astro";
 
-// import Hero from '~/components/widgets/Hero.astro';
-import Note from "~/components/widgets/Note.astro";
-import Features from "~/components/widgets/Features.astro";
-import Features2 from "~/components/widgets/Features2.astro";
-import Steps from "~/components/widgets/Steps.astro";
-import Content from "~/components/widgets/Content.astro";
-import BlogLatestPosts from "~/components/widgets/BlogLatestPosts.astro";
-import Stats from "~/components/widgets/Stats.astro";
-import CallToAction from "~/components/widgets/CallToAction.astro";
 import Hero from "~/components/astroship/Hero.astro";
 import Container from "~/components/astroship/components/container.astro";
 import Logos from "~/components/astroship/Logos.astro";
 import FeatureAlt from "~/components/astroship/FeatureAlt.astro";
-import Cta from "~/components/astroship/Cta.astro";
 import Faq from "~/components/astroship/Faq.astro";
-// import Navbar from "~/components/astroship/Navbar.astro";
+import TestimonialsSlider from "~/components/widgets/TestimonialsSlider.astro";
 
 const metadata = {
   title:
     "AstroWind — Free template for creating websites with Astro + Tailwind CSS",
   ignoreTitleTemplate: true,
 };
+
+// Hero content
+const heroContent = {
+  title: "Create websites with Astroship™",
+  description: "Pro version of popular Astroship starter template made for startups. Built with Astro and Tailwind CSS.",
+  primaryCTA: {
+    text: "Buy Template — $49",
+    href: "https://web3templates.com/templates/astroship-pro-astro-saas-website-template"
+  },
+  secondaryCTA: {
+    text: "Free Version",
+    href: "https://github.com/surjithctly/astroship"
+  }
+};
+
+// Features content
+const featuresContent = {
+  mainHeading: "Supercharge Your Workflows",
+  mainDescription: "Unlock your team's true potential with our state-of-the-art SaaS platform. From intelligent task management to real-time collaboration and top-notch data security, we have everything you need to streamline your workflows and achieve high productivity.",
+  features: [
+    {
+      badge: "Simplified Workflows",
+      title: "Experience the Ultimate Boost in Productivity with Our Intuitive Platform",
+      description: "Streamline your tasks and collaborate seamlessly with our cutting-edge SaaS startup platform. Unlock the potential of your team and take productivity to new heights.",
+      bulletPoints: [
+        "Intelligent Task Management",
+        "Real-time Collaboration",
+        "Data Security & Privacy"
+      ]
+    },
+    {
+      badge: "AI-Powered Insights",
+      title: "Supercharge Your Marketing Strategy with Advanced Analytics",
+      description: "Harness the potential of AI-driven marketing analytics to optimize your campaigns, understand your audience better, and achieve unprecedented growth.",
+      bulletPoints: [
+        "Smart Audience Segmentation",
+        "Predictive Campaign Performance",
+        "Real-time Data Visualization"
+      ]
+    }
+  ]
+};
+
+// FAQ content
+const faqContent = {
+  title: "FAQ",
+  description: "Frequenty asked questions",
+  items: [
+    {
+      question: "What is Astroship's API-based SAAS platform?",
+      answer: "Astroship's API-based SAAS platform is a cloud-based software service that allows users to access and use a variety of API-powered tools and functionality."
+    },
+    {
+      question: "How does Astroship's billing work?",
+      answer: "Astroship offers a variety of billing options, including monthly and annual subscription plans, as well as pay-as-you-go pricing for certain services. Payment is typically made through a credit card or other secure online payment method."
+    },
+    {
+      question: "Can I get a refund for my Astroship subscription?",
+      answer: "Astroship offers a 30-day money-back guarantee for most of its subscription plans. If you are not satisfied with your subscription within the first 30 days, you can request a full refund."
+    },
+    {
+      question: "How do I access the API documentation?",
+      answer: "The API documentation is available on our website and can be accessed by logging into your account. The documentation provides detailed information, code examples, and resources to help you integrate our API."
+    },
+    {
+      question: "What security measures are in place?",
+      answer: "We implement industry-standard security protocols including end-to-end encryption, regular security audits, and compliance with data protection regulations to ensure your data remains secure."
+    },
+    {
+      question: "Do you offer technical support?",
+      answer: "Yes, we provide 24/7 technical support through multiple channels including email, live chat, and phone. Our dedicated support team is always ready to help you with any questions or issues."
+    }
+  ]
+};
+
 ---
 
 <Layout metadata={metadata}>
   <div class="intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade">
-    <Hero />
+    <Hero {...heroContent} />
   </div>
-  <div class="intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade">
+  <div id="features" class="intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade">
     <Container>
       <Logos />
-      <FeatureAlt />
+      <FeatureAlt {...featuresContent} />
     </Container>
   </div>
   <div class="intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade">
-    <Faq />
+    <TestimonialsSlider />
   </div>
-  <div class="intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade">
-    <Cta />
+  <div id="faq" class="intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade">
+    <Faq {...faqContent} />
   </div>
 </Layout>

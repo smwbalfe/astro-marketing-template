@@ -6,12 +6,21 @@ import Footer from "~/components/widgets/Footer.astro";
 import { headerData, footerData } from "~/navigation";
 
 import type { MetaData } from "~/types";
+import Cta from "~/components/astroship/Cta.astro";
 
 export interface Props {
   metadata?: MetaData;
 }
 
 const { metadata } = Astro.props;
+
+const ctaContent = {
+  title: "Build faster websites.",
+  description:
+    "Pull content from anywhere and serve it fast with Astro's next-gen island architecture.",
+  buttonText: "Sign up for a 14-day Trial",
+  buttonHref: "#",
+};
 ---
 
 <Layout metadata={metadata}>
@@ -21,6 +30,11 @@ const { metadata } = Astro.props;
   <main>
     <slot />
   </main>
+  <div
+    class="intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"
+  >
+    <Cta {...ctaContent} />
+  </div>
   <slot name="footer">
     <Footer {...footerData} />
   </slot>

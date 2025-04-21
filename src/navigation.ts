@@ -4,11 +4,15 @@ export const headerData = {
   links: [
     {
       text: 'Features',
-      href: getPermalink('/features'),
+      href: '/#features',
     },
     {
       text: 'Pricing',
       href: getPermalink('/pricing'),
+    },
+    {
+      text: 'FAQ',
+      href: '/#faq',
     },
     {
       text: 'Blog',
@@ -27,13 +31,13 @@ export const footerData = {
     {
       title: 'Product',
       links: [
-        { text: 'Features', href: '#' },
+        { text: 'Features', href: '/#features' },
         { text: 'Security', href: '#' },
         { text: 'Team', href: '#' },
         { text: 'Enterprise', href: '#' },
         { text: 'Customer stories', href: '#' },
-        { text: 'Pricing', href: '#' },
-        { text: 'Resources', href: '#' },
+        { text: 'Pricing', href: getPermalink('/pricing') },
+        { text: 'FAQ', href: '/#faq' },
       ],
     },
     {
@@ -59,8 +63,8 @@ export const footerData = {
     {
       title: 'Company',
       links: [
-        { text: 'About', href: '#' },
-        { text: 'Blog', href: '#' },
+        { text: 'About', href: getPermalink('/about') },
+        { text: 'Blog', href: getBlogPermalink() },
         { text: 'Careers', href: '#' },
         { text: 'Press', href: '#' },
         { text: 'Inclusion', href: '#' },

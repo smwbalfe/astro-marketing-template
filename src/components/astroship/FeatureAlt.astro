@@ -6,7 +6,19 @@ import { Icon } from "astro-icon/components";
 import Link from "./components/link.astro";
 import Image from "~/components/common/Image.astro";
 
-const { nomargin } = Astro.props;
+interface Props {
+    nomargin?: boolean;
+    mainHeading: string;
+    mainDescription: string;
+    features: Array<{
+        badge: string;
+        title: string;
+        description: string;
+        bulletPoints: string[];
+    }>;
+}
+
+const { nomargin, mainHeading, mainDescription, features } = Astro.props;
 ---
 
 <div
@@ -19,13 +31,10 @@ const { nomargin } = Astro.props;
     <h2
         class="text-4xl lg:text-5xl font-bold lg:tracking-tight mt-4 text-center"
     >
-        Supercharge Your Workflows
+        {mainHeading}
     </h2>
     <p class="text-lg mt-4 text-slate-600 text-center [text-wrap:pretty]">
-        Unlock your team's true potential with our state-of-the-art SaaS
-        platform. From intelligent task management to real-time collaboration
-        and top-notch data security, we have everything you need to streamline
-        your workflows and achieve high productivity.
+        {mainDescription}
     </p>
 </div>
 
@@ -41,35 +50,21 @@ const { nomargin } = Astro.props;
 
     <div class="grid place-items-center">
         <div class="max-w-lg">
-            <Badge color="purple" class="-ml-px">Simplified Workflows</Badge>
+            <Badge color="purple" class="-ml-px">{features[0].badge}</Badge>
             <h3 class="text-2xl font-medium mt-4 [text-wrap:balance]">
-                Experience the Ultimate Boost in Productivity with Our Intuitive
-                Platform
+                {features[0].title}
             </h3>
             <p class="mt-4 text-slate-600 [text-wrap:balance]">
-                Streamline your tasks and collaborate seamlessly with our
-                cutting-edge SaaS startup platform. Unlock the potential of your
-                team and take productivity to new heights.
+                {features[0].description}
             </p>
 
             <ul class="grid mt-6 text-left gap-y-4">
-                <li class="flex items-center gap-3 text-neutral-800">
-                    <Icon name="ph:check-circle-fill" class="w-5 h-5" />
-
-                    <span class="text-sm">Intelligent Task Management</span>
-                </li>
-
-                <li class="flex items-center gap-3 text-neutral-800">
-                    <Icon name="ph:check-circle-fill" class="w-5 h-5" />
-
-                    <span class="text-sm">Real-time Collaboration</span>
-                </li>
-
-                <li class="flex items-center gap-3 text-neutral-800">
-                    <Icon name="ph:check-circle-fill" class="w-5 h-5" />
-
-                    <span class="text-sm">Data Security & Privacy</span>
-                </li>
+                {features[0].bulletPoints.map(point => (
+                    <li class="flex items-center gap-3 text-neutral-800">
+                        <Icon name="ph:check-circle-fill" class="w-5 h-5" />
+                        <span class="text-sm">{point}</span>
+                    </li>
+                ))}
             </ul>
             <div class="flex items-center gap-4 mt-6">
                 <Link
@@ -113,31 +108,20 @@ const { nomargin } = Astro.props;
 
     <div class="grid place-items-center">
         <div class="max-w-lg">
-            <Badge color="purple" class="-ml-px">AI-Powered Insights</Badge>
+            <Badge color="purple" class="-ml-px">{features[1].badge}</Badge>
             <h3 class="text-2xl font-medium mt-4 [text-wrap:balance]">
-                Supercharge Your Marketing Strategy with Advanced Analytics
+                {features[1].title}
             </h3>
             <p class="mt-4 text-slate-600 [text-wrap:balance]">
-                Harness the potential of AI-driven marketing analytics to
-                optimize your campaigns, understand your audience better, and
-                achieve unprecedented growth.
+                {features[1].description}
             </p>
             <ul class="grid mt-6 text-left gap-y-4">
-                <li class="flex items-center gap-3 text-neutral-800">
-                    <Icon name="ph:check-circle-fill" class="w-5 h-5" />
-
-                    <span class="text-sm">Smart Audience Segmentation</span>
-                </li>
-                <li class="flex items-center gap-3 text-neutral-800">
-                    <Icon name="ph:check-circle-fill" class="w-5 h-5" />
-
-                    <span class="text-sm">Predictive Campaign Performance</span>
-                </li>
-                <li class="flex items-center gap-3 text-neutral-800">
-                    <Icon name="ph:check-circle-fill" class="w-5 h-5" />
-
-                    <span class="text-sm">Real-time Data Visualization</span>
-                </li>
+                {features[1].bulletPoints.map(point => (
+                    <li class="flex items-center gap-3 text-neutral-800">
+                        <Icon name="ph:check-circle-fill" class="w-5 h-5" />
+                        <span class="text-sm">{point}</span>
+                    </li>
+                ))}
             </ul>
             <div class="flex items-center gap-4 mt-6">
                 <Link
