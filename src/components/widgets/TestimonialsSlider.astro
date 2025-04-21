@@ -1,0 +1,56 @@
+---
+interface Testimonial {
+  name: string;
+  title: string;
+  image: string;
+  text: string;
+}
+
+const testimonials: Testimonial[] = [
+  {
+    name: "Aleksander Walkowski",
+    title: "Founder, WebLeads",
+    image: "/testimonial1.jpg",
+    text: "I've tried Buildpad myself to help me with the validation phase - definitely can recommend. Especially that Reddit search feature was super helpful."
+  },
+  {
+    name: "João Doria Neto",
+    title: "Founder",
+    image: "/testimonial2.jpg",
+    text: "Buildpad helped 'unlock' my stall moment in product ideation and development = so flying through the phases in one go was not only a breeze, but very enjoyable!"
+  },
+  {
+    name: "Mohit Vaswani",
+    title: "Founder",
+    image: "/testimonial3.jpg",
+    text: "Building a product that people really want is hard. But not now, Buildpad is the perfect platform for people who want to create products and apps that users will love."
+  }
+];
+
+const allTestimonials = [...testimonials, ...testimonials];
+---
+
+<div class="w-full overflow-hidden bg-white py-12">
+  <div class="text-center mb-12">
+    <h2 class="text-5xl font-bold mb-4">Client <span class="text-[#6366F1]">Testimonials</span></h2>
+    <p class="text-gray-600 text-lg">Astroship is trusted by the world's leading companies and brands.</p>
+  </div>
+  <div class="relative w-full overflow-hidden">
+    <div class="flex animate-marquee hover:[animation-play-state:paused] w-[200%]">
+      {allTestimonials.map((testimonial) => (
+        <div class="min-w-[400px] mx-4 p-6 rounded-lg shadow-lg bg-white hover:-translate-y-1 transition-transform duration-300">
+          <div class="flex items-center mb-4">
+            <div>
+              <h4 class="font-semibold text-gray-900">{testimonial.name}</h4>
+              <p class="text-sm text-gray-600">{testimonial.title}</p>
+            </div>
+          </div>
+          <p class="text-gray-700">{testimonial.text}</p>
+          <div class="flex text-yellow-400 mt-4">
+            {"★".repeat(5)}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</div> 

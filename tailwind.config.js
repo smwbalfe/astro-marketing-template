@@ -14,19 +14,24 @@ export default {
         muted: 'var(--aw-color-text-muted)',
       },
       fontFamily: {
-        sans: ['var(--aw-font-sans, ui-sans-serif)', ...defaultTheme.fontFamily.sans],
-        serif: ['var(--aw-font-serif, ui-serif)', ...defaultTheme.fontFamily.serif],
-        heading: ['var(--aw-font-heading, ui-sans-serif)', ...defaultTheme.fontFamily.sans],
+        sans: ['Bricolage Grotesque', ...defaultTheme.fontFamily.sans],
+        serif: ['Bricolage Grotesque', ...defaultTheme.fontFamily.serif],
+        heading: ['Bricolage Grotesque', ...defaultTheme.fontFamily.sans],
       },
 
       animation: {
         fade: 'fadeInUp 1s both',
+        'marquee': 'marquee 30s linear infinite',
       },
 
       keyframes: {
         fadeInUp: {
           '0%': { opacity: 0, transform: 'translateY(2rem)' },
           '100%': { opacity: 1, transform: 'translateY(0)' },
+        },
+        marquee: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-50%)' },
         },
       },
     },
