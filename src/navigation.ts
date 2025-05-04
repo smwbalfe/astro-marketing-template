@@ -23,7 +23,10 @@ export const headerData = {
       href: getPermalink('/about'),
     }
   ],
-  actions: [{ text: 'Sign Up', href: '/signup', style: 'primary' }],
+  actions: [
+    { text: 'Login', href: 'https://dash.shrillecho.app/auth', style: 'link' },
+    { text: 'Sign Up', href: 'https://dash.shrillecho.app/auth', style: 'primary' }
+  ],
 };
 
 export const footerData = {

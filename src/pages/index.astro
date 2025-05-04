@@ -7,6 +7,7 @@ import Logos from "~/components/astroship/Logos.astro";
 import FeatureAlt from "~/components/astroship/FeatureAlt.astro";
 import Faq from "~/components/astroship/Faq.astro";
 import TestimonialsSlider from "~/components/widgets/TestimonialsSlider.astro";
+import Feedbackform from "~/components/astroship/Feedbackform";
 
 const metadata = {
   title: "AppName — Modern SaaS Platform for Your Business",
@@ -16,43 +17,47 @@ const metadata = {
 // Hero content
 const heroContent = {
   title: "Create websites with AppName",
-  description: "A modern SaaS platform designed for startups and growing businesses. Built with Astro and Tailwind CSS for optimal performance.",
+  description:
+    "A modern SaaS platform designed for startups and growing businesses. Built with Astro and Tailwind CSS for optimal performance.",
   primaryCTA: {
     text: "Start Free Trial",
-    href: "#"
+    href: "#",
   },
   secondaryCTA: {
     text: "View Demo",
-    href: "#"
-  }
+    href: "#",
+  },
 };
 
 // Features content
 const featuresContent = {
   mainHeading: "Streamline Your Business",
-  mainDescription: "Our platform helps you automate workflows, manage projects, and grow your business efficiently. From task management to analytics, we provide everything you need to succeed.",
+  mainDescription:
+    "Our platform helps you automate workflows, manage projects, and grow your business efficiently. From task management to analytics, we provide everything you need to succeed.",
   features: [
     {
       badge: "Core Features",
       title: "Everything You Need to Run Your Business",
-      description: "Manage projects, track progress, and collaborate with your team in one place. Our intuitive platform makes it easy to stay organized and productive.",
+      description:
+        "Manage projects, track progress, and collaborate with your team in one place. Our intuitive platform makes it easy to stay organized and productive.",
       bulletPoints: [
         "Project Management",
         "Team Collaboration",
-        "Task Automation"
-      ]
+        "Task Automation",
+      ],
     },
     {
       badge: "Analytics",
       title: "Data-Driven Insights for Growth",
-      description: "Make informed decisions with real-time analytics and reporting. Track performance, identify trends, and optimize your business strategy.",
+      description:
+        "Make informed decisions with real-time analytics and reporting. Track performance, identify trends, and optimize your business strategy.",
       bulletPoints: [
         "Performance Metrics",
         "Custom Reports",
-        "Real-time Analytics"
-      ]
-    }
-  ]
+        "Real-time Analytics",
+      ],
+    },
+  ],
 };
 
 // FAQ content
@@ -62,47 +67,62 @@ const faqContent = {
   items: [
     {
       question: "What is AppName?",
-      answer: "AppName is a modern SaaS platform that helps businesses streamline operations, manage projects, and drive growth through automation and analytics."
+      answer:
+        "AppName is a modern SaaS platform that helps businesses streamline operations, manage projects, and drive growth through automation and analytics.",
     },
     {
       question: "How does pricing work?",
-      answer: "We offer flexible pricing plans including monthly and annual subscriptions. Choose the plan that best fits your business needs and scale as you grow."
+      answer:
+        "We offer flexible pricing plans including monthly and annual subscriptions. Choose the plan that best fits your business needs and scale as you grow.",
     },
     {
       question: "Is there a free trial?",
-      answer: "Yes, we offer a 14-day free trial with full access to all features. No credit card required to get started."
+      answer:
+        "Yes, we offer a 14-day free trial with full access to all features. No credit card required to get started.",
     },
     {
       question: "Can I integrate with other tools?",
-      answer: "Yes, our platform offers seamless integration with popular business tools through our API and pre-built connectors."
+      answer:
+        "Yes, our platform offers seamless integration with popular business tools through our API and pre-built connectors.",
     },
     {
       question: "What security measures are in place?",
-      answer: "We implement enterprise-grade security including encryption, regular audits, and compliance with data protection regulations."
+      answer:
+        "We implement enterprise-grade security including encryption, regular audits, and compliance with data protection regulations.",
     },
     {
       question: "Do you offer support?",
-      answer: "Yes, we provide 24/7 support through email, chat, and phone. Our team is always ready to help you succeed."
-    }
-  ]
+      answer:
+        "Yes, we provide 24/7 support through email, chat, and phone. Our team is always ready to help you succeed.",
+    },
+  ],
 };
-
 ---
 
 <Layout metadata={metadata}>
-  <div class="intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade">
+  <div
+    class="intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"
+  >
     <Hero {...heroContent} />
   </div>
-  <div id="features" class="intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade">
+  <div
+    id="features"
+    class="intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"
+  >
     <Container>
       <Logos />
       <FeatureAlt {...featuresContent} />
     </Container>
   </div>
-  <div class="intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade">
+  <div
+    class="intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"
+  >
     <TestimonialsSlider />
   </div>
-  <div id="faq" class="intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade">
+  <div
+    id="faq"
+    class="intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"
+  >
     <Faq {...faqContent} />
   </div>
 </Layout>

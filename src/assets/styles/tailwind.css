@@ -85,8 +85,19 @@
   @apply rotate-45 translate-y-[-8px] translate-x-[14px];
 }
 
-/* To deprecated */
-
 .dd *:first-child {
   margin-top: 0;
+}
+
+@keyframes marquee-reverse {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-marquee-reverse {
+  animation: marquee-reverse 30s linear infinite;
 }
