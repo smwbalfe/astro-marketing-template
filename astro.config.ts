@@ -48,7 +48,7 @@ export default defineConfig({
     SVG: false,
     Logger: 1,
   }), astrowind({
-    config: './src/config.yaml',
+    config: './src/config.yaml' ,
   })],
 
   markdown: {

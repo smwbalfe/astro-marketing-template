@@ -2,7 +2,7 @@ import { defineAction } from 'astro:actions'
 import { z } from 'astro:schema'
 import { Resend } from 'resend'
 
-// const resend = new Resend(import.meta.env.RESEND_API_KEY)
+const resend = new Resend(import.meta.env.RESEND_API_KEY)
 
 export const server = {
   submitEmail: defineAction({
@@ -11,10 +11,10 @@ export const server = {
     }),
     handler: async ({ email }) => {
       try {
-        // await resend.contacts.create({
-        //   audienceId: import.meta.env.RESEND_AUDIENCE_ID,
-        //   email
-        // })
+        await resend.contacts.create({
+          audienceId: import.meta.env.RESEND_AUDIENCE_ID,
+          email
+        })
 
         return {
           success: true,
