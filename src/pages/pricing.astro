@@ -1,18 +1,18 @@
 ---
-import Layout from "~/layouts/PageLayout.astro"
-import Container from "~/components/astroship/components/container.astro"
-import PricingComponent, { type Plan } from "~/components/astroship/Pricing.astro";
+import Layout from "~/layouts/PageLayout.astro";
+import Container from "~/components/molecules/Container.astro";
+import PricingComponent, { type Plan } from "~/components/organisms/Pricing.astro";
 
 const metadata = {
-  title: "Pricing",
-  description: "Simple & Predictable pricing. No Surprises.",
-  openGraph: {
-    url: "/pricing",
-    siteName: "Astrowind",
-    images: [],
-    locale: "en_US",
-    type: "website"
-  }
+    title: "Pricing",
+    description: "Simple & Predictable pricing. No Surprises.",
+    openGraph: {
+        url: "/pricing",
+        siteName: "Astrowind",
+        images: [],
+        locale: "en_US",
+        type: "website",
+    },
 };
 
 const plans: Plan[] = [
@@ -29,7 +29,7 @@ const plans: Plan[] = [
             "Email support",
             "Basic analytics",
             "99.5% uptime SLA",
-            "Data export"
+            "Data export",
         ],
         button: {
             text: "Start Free Trial",
@@ -50,7 +50,7 @@ const plans: Plan[] = [
             "Advanced analytics",
             "99.9% uptime SLA",
             "Custom workflows",
-            "SSO authentication"
+            "SSO authentication",
         ],
         button: {
             text: "Start Free Trial",
@@ -72,7 +72,7 @@ const plans: Plan[] = [
             "SAML & SSO",
             "Audit logs",
             "Security compliance",
-            "Custom contracts"
+            "Custom contracts",
         ],
         button: {
             text: "Contact Sales",
@@ -82,10 +82,12 @@ const plans: Plan[] = [
 ];
 ---
 
-<Layout>
+<Layout metadata={metadata}>
     <Container>
         <h1 class="text-4xl font-bold text-center mb-4">Pricing</h1>
-        <p class="text-xl text-center text-gray-600 mb-12">Simple & Predictable pricing. No Surprises.</p>
+        <p class="text-xl text-center text-gray-600 mb-12">
+            Simple & Predictable pricing. No Surprises.
+        </p>
         <div class="grid md:grid-cols-3 gap-10 mx-auto max-w-screen-lg mt-12">
             {plans.map((item) => <PricingComponent plan={item} />)}
         </div>

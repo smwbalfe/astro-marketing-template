@@ -6,7 +6,6 @@ site:
 
   googleSiteVerificationId: orcPxI47GSa-cRvY11tUe6iGg2IO_RPvnA1q95iEM3M
 
-# Default SEO metadata
 metadata:
   title:
     default: AppName

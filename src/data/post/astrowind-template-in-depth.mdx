@@ -12,8 +12,8 @@ metadata:
   canonical: https://astrowind.vercel.app/astrowind-template-in-depth
 ---
 
-import DListItem from '~/components/ui/DListItem.astro';
-import ToggleTheme from '~/components/common/ToggleTheme.astro';
+import DListItem from '~/components/blog/DListItem.astro';
+
 
 ## Overview
 
@@ -43,7 +43,6 @@ The styling mechanism consists of the following files (all paths are prefixed wi
 
 ### Dark Mode
 
-_Dark Mode_ is triggered by the little 'sunlight' icon:<ToggleTheme/>in the page header. It is defined in the _components/common/ToggleTheme.astro_, but the event is attached and the action defined in _components/common/BasicScripts.astro_ in the following snippet:
 
 ```javascript
 attachEvent('[data-aw-toggle-color-scheme]', 'click', function () {

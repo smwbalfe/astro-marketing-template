@@ -1,12 +1,11 @@
 ---
 import Layout from "~/layouts/Layout.astro";
-import Header from "~/components/widgets/Header.astro";
-import Footer from "~/components/widgets/Footer.astro";
+import Header from "~/components/organisms/Header.astro";
+import Footer from "~/components/organisms/Footer.astro";
+import EmailList from "~/components/organisms/EmailList.astro";
 
 import { headerData, footerData } from "~/navigation";
-
 import type { MetaData } from "~/types";
-import Cta from "~/components/astroship/Cta.astro";
 
 export interface Props {
   metadata?: MetaData;
@@ -33,7 +32,7 @@ const ctaContent = {
   <div
     class="intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"
   >
-    <Cta {...ctaContent} />
+    <EmailList {...ctaContent} />
   </div>
   <slot name="footer">
     <Footer {...footerData} />

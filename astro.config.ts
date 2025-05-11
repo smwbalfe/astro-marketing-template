@@ -11,11 +11,14 @@ import icon from 'astro-icon';
 import compress from 'astro-compress';
 import type { AstroIntegration } from 'astro';
 
+
 import astrowind from './vendor/integration';
 
 import { readingTimeRemarkPlugin, responsiveTablesRehypePlugin, lazyImagesRehypePlugin } from './src/utils/frontmatter';
 
 import react from '@astrojs/react';
+
+import cloudflare from '@astrojs/cloudflare';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -31,17 +34,6 @@ export default defineConfig({
   }), sitemap(), mdx(), icon({
     include: {
       tabler: ['*'],
-      'flat-color-icons': [
-        'template',
-        'gallery',
-        'approval',
-        'document',
-        'advertising',
-        'currency-exchange',
-        'voice-presentation',
-        'business-contact',
-        'database',
-      ],
     },
   }), ...whenExternalScripts(() =>
     partytown({
@@ -62,10 +54,6 @@ export default defineConfig({
     config: './src/config.yaml',
   }), react()],
 
-  image: {
-    domains: ['cdn.pixabay.com'],
-  },
-
   markdown: {
     remarkPlugins: [readingTimeRemarkPlugin],
     rehypePlugins: [responsiveTablesRehypePlugin, lazyImagesRehypePlugin],
@@ -78,4 +66,6 @@ export default defineConfig({
       },
     },
   },
+
+  adapter: cloudflare(),
 });

@@ -1,20 +1,18 @@
 ---
 import Layout from "~/layouts/PageLayout.astro";
 
-import Hero from "~/components/astroship/Hero.astro";
-import Container from "~/components/astroship/components/container.astro";
-import Logos from "~/components/astroship/Logos.astro";
-import FeatureAlt from "~/components/astroship/FeatureAlt.astro";
-import Faq from "~/components/astroship/Faq.astro";
-import TestimonialsSlider from "~/components/widgets/TestimonialsSlider.astro";
-import Feedbackform from "~/components/astroship/Feedbackform";
+import Hero from "~/components/organisms/Hero.astro";
+import Container from "~/components/molecules/Container.astro";
+import Logos from "~/components/organisms/Logos.astro";
+import Features from "~/components/organisms/Features.astro";
+import Faq from "~/components/organisms/Faq.astro";
+import TestimonialsSlider from "~/components/organisms/TestimonialsSlider.astro";
 
 const metadata = {
   title: "AppName — Modern SaaS Platform for Your Business",
   ignoreTitleTemplate: true,
 };
 
-// Hero content
 const heroContent = {
   title: "Create websites with AppName",
   description:
@@ -29,7 +27,6 @@ const heroContent = {
   },
 };
 
-// Features content
 const featuresContent = {
   mainHeading: "Streamline Your Business",
   mainDescription:
@@ -60,7 +57,6 @@ const featuresContent = {
   ],
 };
 
-// FAQ content
 const faqContent = {
   title: "Frequently Asked Questions",
   description: "Common questions about our platform",
@@ -111,7 +107,7 @@ const faqContent = {
   >
     <Container>
       <Logos />
-      <FeatureAlt {...featuresContent} />
+      <Features {...featuresContent} />
     </Container>
   </div>
   <div
