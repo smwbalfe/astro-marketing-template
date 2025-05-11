@@ -11,12 +11,9 @@ import icon from 'astro-icon';
 import compress from 'astro-compress';
 import type { AstroIntegration } from 'astro';
 
-
 import astrowind from './vendor/integration';
 
 import { readingTimeRemarkPlugin, responsiveTablesRehypePlugin, lazyImagesRehypePlugin } from './src/utils/frontmatter';
-
-import react from '@astrojs/react';
 
 import cloudflare from '@astrojs/cloudflare';
 
@@ -27,7 +24,7 @@ const whenExternalScripts = (items: (() => AstroIntegration) | (() => AstroInteg
   hasExternalScripts ? (Array.isArray(items) ? items.map((item) => item()) : [items()]) : [];
 
 export default defineConfig({
-  output: 'server',
+  output: 'static',
 
   integrations: [tailwind({
     applyBaseStyles: false,
@@ -52,7 +49,7 @@ export default defineConfig({
     Logger: 1,
   }), astrowind({
     config: './src/config.yaml',
-  }), react()],
+  })],
 
   markdown: {
     remarkPlugins: [readingTimeRemarkPlugin],
@@ -67,8 +64,8 @@ export default defineConfig({
     },
   },
 
-  // adapter: cloudflare({
-  //   imageService: 'compile',
-  //   cloudflareModules: true
-  // }),
+  adapter: cloudflare({
+    imageService: 'compile',
+    cloudflareModules: true
+  }),
 });
