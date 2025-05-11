@@ -10,10 +10,10 @@ export const server = {
     }),
     handler: async ({ email }) => {
       try {
-        const resend = new Resend(import.meta.env.RESEND_API_KEY)
+        const resend = new Resend(process.env.RESEND_API_KEY as string)
 
         await resend.contacts.create({
-          audienceId: import.meta.env.RESEND_AUDIENCE_ID,
+          audienceId: process.env.RESEND_AUDIENCE_ID as string,
           email
         })
 
