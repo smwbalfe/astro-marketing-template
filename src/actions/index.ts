@@ -22,7 +22,11 @@ export const server = {
           message: 'Success!'
         }
       } catch (error) {
-        throw new Error('Failed to add subscriber')
+        const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
+        return {
+          success: false,
+          message: `Failed to add subscriber: ${errorMessage}`
+        }
       }
     }
   })
