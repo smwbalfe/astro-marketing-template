@@ -67,8 +67,8 @@ export default defineConfig({
     },
   },
 
-  adapter: cloudflare({
-    imageService: 'compile',
-    cloudflareModules: true
-  }),
+  // adapter: cloudflare({
+  //   imageService: 'compile',
+  //   cloudflareModules: true
+  // }),
 });
