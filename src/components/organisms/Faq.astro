@@ -1,0 +1,43 @@
+---
+import Container from "~/components/molecules/Container.astro";
+import Sectionhead from "~/components/molecules/SectionHead.astro";
+import ArrowIcon from "~/components/atoms/Arrow.astro";
+
+interface Props {
+    title: string;
+    description: string;
+    items: Array<{
+        question: string;
+        answer: string;
+    }>;
+}
+
+const { title, description, items } = Astro.props;
+---
+
+<Container>
+    <Sectionhead>
+        <Fragment slot="title">{title}</Fragment>
+        <Fragment slot="desc">{description}</Fragment>
+    </Sectionhead>
+
+    <div class="grid divide-y divide-neutral-200 max-w-xl mx-auto mt-8">
+        {
+            items.map((item) => (
+                <div class="py-5 intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade">
+                    <details class="group">
+                        <summary class="flex justify-between items-center font-medium cursor-pointer list-none">
+                            <span>{item.question}</span>
+                            <span class="transition group-open:rotate-180">
+                                <ArrowIcon />
+                            </span>
+                        </summary>
+                        <p class="text-neutral-600 mt-3 opacity-0 -translate-y-3 group-open:translate-y-0 group-open:opacity-100 group-open:transition-all">
+                            {item.answer}
+                        </p>
+                    </details>
+                </div>
+            ))
+        }
+    </div>
+</Container>
