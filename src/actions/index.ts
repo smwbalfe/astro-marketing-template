@@ -2,18 +2,18 @@ import { defineAction } from 'astro:actions'
 import { z } from 'astro:schema'
 import { Resend } from 'resend'
 
-
 export const server = {
   submitEmail: defineAction({
     input: z.object({
       email: z.string().email()
     }),
-    handler: async ({ email }) => {
+    handler: async ({ email }, Astro) => {
       try {
-        const resend = new Resend(process.env.RESEND_API_KEY as string)
+      
+        const resend = new Resend(Astro.locals.runtime.env.RESEND_API_KEY)
 
         await resend.contacts.create({
-          audienceId: process.env.RESEND_AUDIENCE_ID as string,
+          audienceId: Astro.locals.runtime.env.RESEND_AUDIENCE_ID,
           email
         })
 
