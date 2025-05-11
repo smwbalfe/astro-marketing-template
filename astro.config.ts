@@ -39,7 +39,7 @@ export default defineConfig({
   ), compress({
     CSS: true,
     HTML: {
-      'html-minifier-terser': {
+      'html-minifier-terser':  {
         removeAttributeQuotes: false,
       },
     },
