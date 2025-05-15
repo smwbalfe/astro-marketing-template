@@ -1,7 +1,6 @@
 ---
 import Badge from "~/components/atoms/Badge.astro";
-import FeatureImg1 from "~/assets/images/6.png";
-import FeatureImg2 from "~/assets/images/2.png";
+import { findImage } from "~/utils/images";
 import { Icon } from "astro-icon/components";
 import Link from "~/components/atoms/Link.astro";
 import Image from "~/components/atoms/Image.astro";
@@ -19,6 +18,8 @@ interface Props {
 }
 
 const { nomargin, mainHeading, mainDescription, features } = Astro.props;
+const featureImg1 = await findImage("~/assets/images/6.png");
+const featureImg2 = await findImage("~/assets/images/2.png");
 ---
 
 <div
@@ -41,10 +42,11 @@ const { nomargin, mainHeading, mainDescription, features } = Astro.props;
 <div class="grid md:grid-cols-2 py-10">
     <div class="grid place-items-center">
         <Image
-            src={FeatureImg1}
+            src={featureImg1}
             alt="Feature Image"
             loading="lazy"
             class="w-full h-auto"
+            width={600}
         />
     </div>
 
@@ -99,10 +101,11 @@ const { nomargin, mainHeading, mainDescription, features } = Astro.props;
 <div class="grid md:grid-cols-2 py-10">
     <div class="grid place-items-center pb-10 md:pb-0 md:order-2">
         <Image
-            src={FeatureImg2}
+            src={featureImg2}
             alt="Feature Image"
             loading="lazy"
             class="w-full h-auto"
+            width={600}
         />
     </div>
 

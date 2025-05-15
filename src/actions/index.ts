@@ -9,11 +9,17 @@ export const server = {
     }),
     handler: async ({ email }, Astro) => {
       try {
-      
-        const resend = new Resend(Astro.locals.runtime.env.RESEND_API_KEY)
+        const resendApiKey = Astro.locals?.runtime?.env?.RESEND_API_KEY || process.env.RESEND_API_KEY
+        const audienceId = Astro.locals?.runtime?.env?.RESEND_AUDIENCE_ID || process.env.RESEND_AUDIENCE_ID
+        
+        if (!resendApiKey || !audienceId) {
+          throw new Error('Missing required environment variables')
+        }
+        
+        const resend = new Resend(resendApiKey)
 
         await resend.contacts.create({
-          audienceId: Astro.locals.runtime.env.RESEND_AUDIENCE_ID,
+          audienceId,
           email
         })
 

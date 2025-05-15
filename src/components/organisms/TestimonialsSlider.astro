@@ -25,6 +25,11 @@ const testimonials: Testimonial[] = [
     text: "Building a product that people really want is hard. But not now, Buildpad is the perfect platform for people who want to create products and apps that users will love.",
   },
 ];
+
+
+
+import Image from "~/components/atoms/Image.astro";
+import { findImage } from "~/utils/images";
 ---
 
 <div class="w-full bg-white py-16">
@@ -41,10 +46,14 @@ const testimonials: Testimonial[] = [
       testimonials.map((testimonial) => (
         <div class="p-8 rounded-xl shadow-lg bg-white hover:-translate-y-2 transition-transform duration-300">
           <div class="flex items-center mb-6">
-            <img 
+            <Image 
               src={testimonial.image} 
               alt={`${testimonial.name} profile picture`} 
               class="w-16 h-16 rounded-full object-cover mr-4 border-2 border-[#6366F1]"
+              width={64}
+              height={64}
+              loading="lazy"
+              decoding="async"
             />
             <div>
               <h4 class="font-semibold text-xl text-gray-900">{testimonial.name}</h4>

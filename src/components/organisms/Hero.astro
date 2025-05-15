@@ -1,8 +1,8 @@
 ---
-import { Picture } from "astro:assets";
-import heroImage from "~/assets/images/hero-screenshot.png";
+import { findImage } from "~/utils/images";
 import Link from "~/components/atoms/Link.astro";
 import Container from "~/components/molecules/Container.astro";
+import Image from "~/components/atoms/Image.astro";
 
 interface Props {
     title: string;
@@ -17,7 +17,10 @@ interface Props {
     };
 }
 
-const { title, description, primaryCTA, secondaryCTA } = Astro.props;
+const { title, primaryCTA, secondaryCTA } = Astro.props;
+const description = "A powerful AI wrapper that enhances your GPT experience. Access advanced features, custom instructions, and seamless integrations for maximum productivity.";
+const heroImage = await findImage("~/assets/images/hero-screenshot.png");
+console.log(heroImage)
 ---
 
 <div class="overflow-x-clip">
@@ -36,45 +39,47 @@ const { title, description, primaryCTA, secondaryCTA } = Astro.props;
                 <h1
                     class="text-3xl lg:text-4xl xl:text-6xl font-bold lg:tracking-tight xl:tracking-tighter [text-wrap:balance] text-center lg:text-start"
                 >
-                    {title}
+                    <span class="text-purple-600">Supercharge</span> Your Workflow <span class="relative inline-block">
+                        <span class="relative z-10 bg-gradient-to-r from-purple-600 to-indigo-600 text-transparent bg-clip-text">with AppName</span>
+                        <span class="absolute inset-0 bg-yellow-200 -z-10 transform -rotate-1"></span>
+                    </span>
                 </h1>
                 <p
                     class="text-lg mt-4 max-w-lg text-slate-600 [text-wrap:balance] text-center lg:text-start"
                 >
-                    {description}
+                    The <span class="font-bold text-purple-600">ultimate AI wrapper</span> that transforms your GPT experience. Unlock <span class="font-bold underline decoration-indigo-300 decoration-2 underline-offset-2">advanced features</span>, implement <span class="font-bold underline decoration-purple-300 decoration-2 underline-offset-2">custom instructions</span>, and leverage <span class="font-bold underline decoration-indigo-300 decoration-2 underline-offset-2">seamless integrations</span> for <span class="bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-2 py-0.5 rounded">10x productivity</span>.
                 </p>
                 <div
-                    class="mt-6 flex flex-col sm:flex-row sm:justify-center lg:justify-start gap-3"
+                    class="mt-8 flex flex-col sm:flex-row sm:justify-center lg:justify-start gap-4"
                 >
                     <Link
                         href={primaryCTA.href}
                         target="_blank"
-                        class="flex gap-1 items-center justify-center"
+                        class="inline-flex gap-1 items-center justify-center text-sm font-medium px-5 py-2.5 rounded-lg shadow-sm hover:shadow-md transition-all duration-200"
                         rel="noopener"
                     >
-                        {primaryCTA.text}
+                        {primaryCTA.text} →
                     </Link>
                     <Link
-                        size="lg"
+                        size="md"
                         style="outline"
                         rel="noopener"
                         href={secondaryCTA.href}
-                        class="flex gap-1 items-center justify-center"
+                        class="inline-flex gap-1 items-center justify-center text-sm font-medium px-5 py-2.5 rounded-lg border border-current hover:bg-gray-50 transition-colors duration-200"
                         target="_blank"
                     >
                         {secondaryCTA.text}
                     </Link>
                 </div>
             </div>
-            <div class="py-3 lg:col-span-3 lg:-mr-44">
-                <Picture
+            <div class="py-3 lg:col-span-3 lg:-mr-44 relative">
+                <div class="absolute -inset-1 bg-white rounded-xl blur-xl"></div>
+                <Image
                     src={heroImage}
                     alt="Astronaut in the air"
-                    formats={["avif", "webp"]}
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                    widths={[240, 540, 720, heroImage.width]}
+                    width={800}
                     loading="eager"
-                    fetchpriority="high"
+                    class="relative"
                 />
             </div>
         </main>

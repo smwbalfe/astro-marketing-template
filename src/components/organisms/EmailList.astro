@@ -1,16 +1,16 @@
-<div
-  class="bg-gradient-to-bl from-indigo-900 to-indigo-700 p-8 md:px-20 md:py-20 mt-20 flex flex-col items-center text-center"
+w<div
+  class="bg-gradient-to-r from-purple-100 to-indigo-100 p-8 md:px-20 md:py-20 mt-20 flex flex-col items-center text-center rounded-2xl relative shadow-xl border border-purple-200"
 >
   <form
-    class="w-full max-w-md mx-auto bg-white/10 backdrop-blur-sm rounded-lg p-6 shadow-xl"
+    class="w-full max-w-md mx-auto bg-white rounded-xl p-8 shadow-2xl transform hover:scale-105 transition-transform duration-300"
     id="newsletter-form"
     method="POST"
   >
-    <h3 class="text-white text-2xl font-bold mb-6">
+    <h3 class="text-primary text-2xl font-bold mb-6">
       Subscribe to our newsletter
     </h3>
-    <div class="mb-6">
-      <label class="block text-white text-sm font-medium mb-2" for="email">
+    <div class="mb-6 relative">
+      <label class="block text-primary text-sm font-medium mb-2" for="email">
         Email
       </label>
       <input
@@ -18,17 +18,28 @@
         id="email"
         name="email"
         required
-        class="w-full px-4 py-2 bg-white/20 border border-indigo-300/30 rounded-md text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50"
+        class="w-full px-4 py-3 bg-white border border-accent/30 rounded-lg text-primary placeholder-primary/60 focus:outline-none focus:ring-2 focus:ring-purple-500 shadow-sm"
+        placeholder="your@email.com"
       />
+      <div class="absolute -right-16 -top-10">
+        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-purple-600 animate-bounce">
+          <path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-15l-3 5h2v5l3-5h-2V7z" fill="currentColor"/>
+        </svg>
+      </div>
     </div>
     <button
       type="submit"
-      class="w-full bg-white text-indigo-900 font-medium py-2 px-4 rounded-md hover:bg-indigo-100 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-white/50"
+      class="w-full bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-medium py-3 px-4 rounded-lg hover:from-purple-700 hover:to-indigo-700 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-purple-500 shadow-md"
     >
       Subscribe
     </button>
-    <div id="subscription-message" class="mt-4 text-white hidden"></div>
+    <div id="subscription-message" class="mt-4 text-primary hidden"></div>
   </form>
+  <div class="absolute -bottom-6 left-1/2 transform -translate-x-1/2">
+    <svg width="120" height="12" viewBox="0 0 120 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="60" cy="6" rx="60" ry="6" fill="rgba(109, 40, 217, 0.1)"/>
+    </svg>
+  </div>
 </div>
 
 <script>
@@ -38,6 +49,7 @@
   
   form?.addEventListener("submit", async (e) => {
     e.preventDefault();
+    e.stopPropagation();
     const formData = new FormData(e.target as HTMLFormElement);
     const email = formData.get("email") as string;
     try {
@@ -46,15 +58,16 @@
       if (result.data?.success && messageEl) {
         messageEl.textContent = "Success! You've been subscribed.";
         messageEl.classList.remove("hidden");
-        messageEl.classList.add("text-green-200");
+        messageEl.classList.add("text-green-600");
       }
     } catch (error) {
       console.error("Failed to subscribe:", error);
       if (messageEl) {
         messageEl.textContent = "Failed to subscribe. Please try again.";
         messageEl.classList.remove("hidden");
-        messageEl.classList.add("text-red-200");
+        messageEl.classList.add("text-red-600");
       }
     }
+    return false;
   });
 </script>
